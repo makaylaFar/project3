@@ -37,8 +37,9 @@ class universe(ShowBase):
         self.modelNode.setTexture(tex, 1)
 
 class spaceShip(ShowBase):
-    def __init__(self, loader: Loader, modelPath: str, parentNode: NodePath, nodeName: str, texPath: str, posVec: Vec3, scaleVec: float, task):
+    def __init__(self, loader: Loader, modelPath: str, parentNode: NodePath, nodeName: str, texPath: str, posVec: Vec3, scaleVec: float, task, render):
         self.taskManager = task
+        self.render = render
 
         self.modelNode = loader.loadModel(modelPath)
         self.modelNode.reparentTo(parentNode)
@@ -58,7 +59,7 @@ class spaceShip(ShowBase):
 
     def ApplyThrust(self, task):
         rate = 5
-        trajectory = self.renderer.getRelativeVector(self.modelNode, Vec3.forward())
+        trajectory = self.render.getRelativeVector(self.modelNode, Vec3.forward())
         trajectory.normalize()
         self.modelNode.setFluidPos(self.modelNode.getPos() + trajectory * rate)
         return Task.cont
