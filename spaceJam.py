@@ -52,7 +52,7 @@ class spaceJam(ShowBase):
     def DrawCircleXZ(self, centralObject, droneName):
         unitVec = defensePaths.CircleXZ()
         unitVec.normalize()
-        position = unitVec * 550 + centralObject.modelNode.getPos()
+        position = unitVec * 600 + centralObject.modelNode.getPos()
         spaceJamClasses.Drone(self.loader, "./assets/DroneDefender/DroneDefender.obj", self.render, droneName, "./assets/DroneDefender/octotoad1_auv.png", position,5)
     
         
@@ -62,7 +62,7 @@ class spaceJam(ShowBase):
         self.planet1 = spaceJamClasses.Planet(self.loader, "./assets/planets/protoPlanet.x", self.render,'planet1',"./assets/planets/weirdPlanet.png", (-6000, -3000, -800), 250)
         self.planet2 = spaceJamClasses.Planet(self.loader, "./assets/planets/protoPlanet.x", self.render,'planet2',"./assets/planets/moon.jpg", (0, 6000, 0), 300)
         self.planet3 = spaceJamClasses.Planet(self.loader, "./assets/planets/protoPlanet.x", self.render,'planet3',"./assets/planets/rocky.jpg", (-6000, -5000, 200), 500)
-        self.planet4 = spaceJamClasses.Planet(self.loader, "./assets/planets/protoPlanet.x", self.render,'planet4',"./assets/planets/sandy.jpg", (300, 6000, 500), 150)
+        self.planet4 = spaceJamClasses.Planet(self.loader, "./assets/planets/protoPlanet.x", self.render,'planet4',"./assets/planets/sandy.jpg", (300, 6000, 500), 200)
         self.planet5 = spaceJamClasses.Planet(self.loader, "./assets/planets/protoPlanet.x", self.render,'planet5',"./assets/planets/mars.jpg", (700, 2000, 100), 500)
         self.planet6 = spaceJamClasses.Planet(self.loader, "./assets/planets/protoPlanet.x", self.render,'planet6',"./assets/planets/sun.jpg", (0, -900, -1400), 700)
         self.ship = spaceJamClasses.spaceShip(self.loader, "./assets/spaceShip/Khan.egg", self.render,'ship', "./assets/spaceShip/Khan.jpg", (-1100, 200, -800), 10, self.taskMgr, self.render)

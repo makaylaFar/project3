@@ -36,7 +36,7 @@ def CircleXZ( radius = 1):
     x = spaceJamClasses.xz.circleIncrement
     theta = x
     unitVec = Vec3(50.0 * math.cos(theta), 0 * math.sin(theta),  50.0 * math.tan(theta))
-    spaceJamClasses.xz.circleIncrement += 0.82
+    spaceJamClasses.xz.circleIncrement += 50
     return unitVec * radius
 
 # Cos = X, Sin = Y, Tan = Z
@@ -45,7 +45,7 @@ def CircleXY(radius = 1):
     x = spaceJamClasses.xy.circleIncrement
     theta = x
     unitVec = Vec3(50.0 * math.cos(theta),  50.0 * math.sin(theta), 0 * math.tan(theta) )
-    spaceJamClasses.xy.circleIncrement += 0.6
+    spaceJamClasses.xy.circleIncrement += 50
     return unitVec * radius
     
     
@@ -54,5 +54,5 @@ def CircleYZ(radius = 1):
     x = spaceJamClasses.yz.circleIncrement
     theta = x
     unitVec = Vec3(0 * math.cos(theta), 50.0 * math.sin(theta),  50.0 * math.tan(theta))
-    spaceJamClasses.yz.circleIncrement += 0.1
+    spaceJamClasses.yz.circleIncrement += 20
     return unitVec * radius
