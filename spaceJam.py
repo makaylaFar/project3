@@ -59,8 +59,8 @@ class spaceJam(ShowBase):
     def sceneSetup(self):
 
         self.universe = spaceJamClasses.universe(self.loader, "./assets/universe/Universe.x", self.render,'universe',"./assets/universe/universe.jpeg", (0, 0, 0), 10000)
-        self.planet1 = spaceJamClasses.Planet(self.loader, "./assets/planets/protoPlanet.x", self.render,'planet1',"./assets/planets/green.jpg", (-6000, -3000, -800), 250)
-        self.planet2 = spaceJamClasses.Planet(self.loader, "./assets/planets/protoPlanet.x", self.render,'planet2',"./assets/planets/purple.jpg", (0, 6000, 0), 300)
+        self.planet1 = spaceJamClasses.Planet(self.loader, "./assets/planets/protoPlanet.x", self.render,'planet1',"./assets/planets/weirdPlanet.png", (-6000, -3000, -800), 250)
+        self.planet2 = spaceJamClasses.Planet(self.loader, "./assets/planets/protoPlanet.x", self.render,'planet2',"./assets/planets/moon.jpg", (0, 6000, 0), 300)
         self.planet3 = spaceJamClasses.Planet(self.loader, "./assets/planets/protoPlanet.x", self.render,'planet3',"./assets/planets/rocky.jpg", (-6000, -5000, 200), 500)
         self.planet4 = spaceJamClasses.Planet(self.loader, "./assets/planets/protoPlanet.x", self.render,'planet4',"./assets/planets/sandy.jpg", (300, 6000, 500), 150)
         self.planet5 = spaceJamClasses.Planet(self.loader, "./assets/planets/protoPlanet.x", self.render,'planet5',"./assets/planets/mars.jpg", (700, 2000, 100), 500)

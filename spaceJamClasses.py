@@ -137,7 +137,7 @@ class spaceShip(ShowBase):
     
     def RollLeft(self, keyDown):
         if keyDown:
-            self.taskManager.add(self.ApplyMoveDown, 'left-roll')
+            self.taskManager.add(self.ApplyRollLeft, 'left-roll')
         else:
             self.taskManager.remove('left-roll')
 
@@ -149,14 +149,14 @@ class spaceShip(ShowBase):
     
     def RollRight(self, keyDown):
         if keyDown:
-            self.taskManager.add(self.ApplyMoveDown, 'right-roll')
+            self.taskManager.add(self.ApplyRollRight, 'right-roll')
         else:
             self.taskManager.remove('right-roll')
 
     
     def ApplyRollRight(self, task):
-        rate = -.6
-        self.modelNode.setR(self.modelNode.getR() + rate)
+        rate = .6
+        self.modelNode.setR(self.modelNode.getR() - rate)
         return Task.cont
 
 class spaceStation(ShowBase):
