@@ -4,19 +4,29 @@
 from direct.showbase.ShowBase import ShowBase
 import defensePaths as defensePaths
 import spaceJamClasses as spaceJamClasses
+
 class spaceJam(ShowBase):
 
+    # for the camera setup
     def SetCamera(self):
+        # prevents mouse from being able to move camera
         self.disableMouse()
+        # reparents the model to the ship/player
         self.camera.reparentTo(self.ship.modelNode)
+        # makes it so it's position is moving so it can collide into things
         self.camera.setFluidPos(0, 1, 0)
 
+    # Initialize ShowBase to be used later
     def __init__(self):
         ShowBase.__init__(self)
 
+    # Draws the cloudDefense
     def DrawCloudDefense(self, centralObject, droneName):
+        # calls the position calculated in defensePaths.Cloud
         unitVec = defensePaths.Cloud()
+        # normalizes the vec
         unitVec.normalize()
+        # makes the position so it accounts for the planet and some space between it and the drones
         position = unitVec * 500 + centralObject.modelNode.getPos()
         spaceJamClasses.Drone(self.loader, "./assets/DroneDefender/DroneDefender.obj", self.render, droneName, "./assets/DroneDefender/octotoad1_auv.png", position, 10)
         
@@ -55,7 +65,7 @@ class spaceJam(ShowBase):
         self.planet4 = spaceJamClasses.Planet(self.loader, "./assets/planets/protoPlanet.x", self.render,'planet4',"./assets/planets/sandy.jpg", (300, 6000, 500), 150)
         self.planet5 = spaceJamClasses.Planet(self.loader, "./assets/planets/protoPlanet.x", self.render,'planet5',"./assets/planets/mars.jpg", (700, 2000, 100), 500)
         self.planet6 = spaceJamClasses.Planet(self.loader, "./assets/planets/protoPlanet.x", self.render,'planet6',"./assets/planets/sun.jpg", (0, -900, -1400), 700)
-        self.ship = spaceJamClasses.spaceShip(self.loader, "./assets/spaceShip/Khan.egg", self.render,'ship', "./assets/spaceShip/Khan.jpg", (-1100, 200, -800), 10)
+        self.ship = spaceJamClasses.spaceShip(self.loader, "./assets/spaceShip/Khan.egg", self.render,'ship', "./assets/spaceShip/Khan.jpg", (-1100, 200, -800), 10, self.taskMgr)
         self.spaceStation = spaceJamClasses.spaceStation(self.loader, "./assets/spaceStation/spaceStation.egg", self.render,'ship', "./assets/spaceStation/SpaceStation1_Dif2.png", (-3100, 200, 2000), 10)
         self.SetCamera()    
         fullCycle = 60
@@ -72,4 +82,5 @@ class spaceJam(ShowBase):
 
 app = spaceJam()  
 app.sceneSetup()  
+app.ship.SetKeyBindings()
 app.run()
