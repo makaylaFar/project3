@@ -4,6 +4,9 @@
 from direct.showbase.ShowBase import ShowBase
 import defensePaths as defensePaths
 import spaceJamClasses as spaceJamClasses
+from collideObjectBase import PlacedObject
+from panda3d.core import CollisionTraverser, CollisionHandlerPusher
+
 
 class spaceJam(ShowBase):
 
@@ -19,6 +22,9 @@ class spaceJam(ShowBase):
     # Initialize ShowBase to be used later
     def __init__(self):
         ShowBase.__init__(self)
+        self.cTrav = CollisionTraverser()
+        self.cTrav.traverse(self.render)
+        self.pusher = CollisionHandlerPusher()
 
     # Draws the cloudDefense
     def DrawCloudDefense(self, centralObject, droneName):
@@ -57,7 +63,8 @@ class spaceJam(ShowBase):
     
         
     def sceneSetup(self):
-
+        self.pusher.addCollider(self.ship.collisionNode, self.ship.modelNode)
+        self.cTrav.addCollider(self.ship.collisionNode, self.pusher)
         self.universe = spaceJamClasses.universe(self.loader, "./assets/universe/Universe.x", self.render,'universe',"./assets/universe/universe.jpeg", (0, 0, 0), 10000)
         self.planet1 = spaceJamClasses.Planet(self.loader, "./assets/planets/protoPlanet.x", self.render,'planet1',"./assets/planets/weirdPlanet.png", (-6000, -3000, -800), 250)
         self.planet2 = spaceJamClasses.Planet(self.loader, "./assets/planets/protoPlanet.x", self.render,'planet2',"./assets/planets/moon.jpg", (0, 6000, 0), 300)
